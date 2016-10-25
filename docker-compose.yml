@@ -1,0 +1,16 @@
+version: "2"
+
+volumes:
+  gems-data:
+      driver: local
+
+services:
+  web:
+    image: kurenn/docker-webkit
+    working_dir: /usr/src/app
+    command: rails server -b 0.0.0.0
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+      - gems-data:/usr/local/bundle
